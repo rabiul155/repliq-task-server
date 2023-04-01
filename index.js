@@ -3,7 +3,7 @@ const app = express()
 const cors = require('cors');
 const port = process.env.PORT || 5000
 require('dotenv').config();
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
 
 app.use(cors())
@@ -22,6 +22,42 @@ async function run() {
     try {
 
         const usersCollection = client.db('repliq-task').collection('users')
+        const productsCollection = client.db('repliq-task').collection('products')
+        const cartProduct = client.db('repliq-task').collection('cart')
+
+
+
+        app.get('/products', async (req, res) => {
+            const query = {}
+            const result = await productsCollection.find(query).toArray()
+            res.send(result);
+        })
+
+        app.get('/item/:_id', async (req, res) => {
+            const id = req.params._id;
+            console.log(id);
+            const query = { _id: new ObjectId(id) }
+            const result = await productsCollection.findOne(query)
+            res.send(result)
+
+        })
+
+
+        app.get('/cart', async (req, res) => {
+            const email = req.query.email;
+            console.log(email);
+            const query = { email: email }
+            const result = await cartProduct.find(query).toArray();
+            res.send(result);
+
+        })
+
+        app.post('/cart', async (req, res) => {
+            const product = req.body;
+            const result = await cartProduct.insertOne(product);
+            res.send(result);
+        })
+
 
 
         app.post('/users', async (req, res) => {

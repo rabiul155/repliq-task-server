@@ -1,0 +1,38 @@
+[
+    {
+        "price": 79,
+        "procesor": "Snapdaragon 720G",
+        "ram": "6GB",
+        "storage": "128GB",
+        "camera": "108MP",
+        "batery": "5000 mah",
+        "display": "6.5 inch",
+        "picture": "https://www.bdprice.com.bd/wp-content/uploads/2020/08/Google-Pixel-5-5G.jpg",
+        "name": "Google Pixel 4",
+        "about": "Velit ipsum adipisicing duis consequat amet .\r\n"
+    },
+    {
+        "price": 90,
+        "procesor": "Helio G90",
+        "ram": "8GB",
+        "storage": "128GB",
+        "camera": "64MP",
+        "batery": "5000 mah",
+        "display": "6.67 inch",
+        "picture": "https://cdn.shopify.com/s/files/1/1706/9177/products/google-pixel-5-5g-128gb-negro_1.jpg?v=1619688524",
+        "name": "Google Pixel 6",
+        "about": "Commodo id do pariatur ad labore ad. Eiusmod \r\n"
+    },
+    {
+        "price": 80,
+        "procesor": " helio G90T",
+        "ram": "4GB",
+        "storage": "64GB",
+        "camera": "48MP",
+        "batery": "5000 mah",
+        "display": "6 inch",
+        "picture": "https://www.bdprice.com.bd/wp-content/uploads/2020/08/Google-Pixel-5-5G-500x500.jpg",
+        "name": "Google Pixel 5",
+        "about": "Et in nulla ullamco veniam et sint occaecat. .\r\n"
+    }
+]
