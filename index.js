@@ -67,6 +67,35 @@ async function run() {
             res.send(result);
         })
 
+        app.delete('/item/:_id', async (req, res) => {
+            const _id = req.params._id;
+            console.log(_id);
+            const query = { _id: new ObjectId(_id) }
+            const result = await cartProduct.deleteOne(query);
+            res.send(result);
+        })
+
+
+        app.put('/updateCart', async (req, res) => {
+            const email = req.query.email;
+            const _id = req.query._id;
+            const quantity = req.body.quantity;
+
+            const filter = {
+                email: email,
+                _id: new ObjectId(_id)
+            }
+            const options = { upsert: true };
+            const updatedDoc = {
+                $set: {
+                    quantity: quantity
+                }
+            }
+
+            const result = await cartProduct.updateOne(filter, updatedDoc, options);
+            res.send(result);
+        })
+
 
 
 
