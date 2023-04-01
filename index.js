@@ -59,6 +59,15 @@ async function run() {
 
         })
 
+        app.delete('/item/:_id', async (req, res) => {
+            const _id = req.params._id;
+
+            const query = { _id: new ObjectId(_id) }
+            const result = await cartProduct.deleteOne(query);
+            res.send(result);
+        })
+
+
 
         app.get('/cart', async (req, res) => {
             const email = req.query.email;
@@ -72,28 +81,6 @@ async function run() {
         app.post('/cart', async (req, res) => {
             const product = req.body;
             const result = await cartProduct.insertOne(product);
-            res.send(result);
-        })
-
-        app.get('/users', async (req, res) => {
-            const query = {}
-            const result = await usersCollection.find(query).toArray()
-            res.send(result);
-        })
-
-
-
-        app.post('/users', async (req, res) => {
-            const user = req.body;
-            const result = await usersCollection.insertOne(user);
-            res.send(result);
-        })
-
-        app.delete('/item/:_id', async (req, res) => {
-            const _id = req.params._id;
-
-            const query = { _id: new ObjectId(_id) }
-            const result = await cartProduct.deleteOne(query);
             res.send(result);
         })
 
@@ -117,6 +104,24 @@ async function run() {
             const result = await cartProduct.updateOne(filter, updatedDoc, options);
             res.send(result);
         })
+
+
+        app.get('/users', async (req, res) => {
+            const query = {}
+            const result = await usersCollection.find(query).toArray()
+            res.send(result);
+        })
+
+
+
+        app.post('/users', async (req, res) => {
+            const user = req.body;
+            const result = await usersCollection.insertOne(user);
+            res.send(result);
+        })
+
+
+
 
         app.get('/orders', async (req, res) => {
             const query = {}
